@@ -67,7 +67,7 @@ Accuracy Matrix:
 |Name|Logistic Regression|KNN|Navies Bayes Multinomials|Decision Tree(base)|Decision Tree
 |---|---|---|---|---|---|
 CountVect|86%|58%|84%|79%|80%
-Tfidf|85%|76%|84%|83%|81%
+Tfidf|85%|76%|83%|83%|81%
 
 Best Results: Logistic Regression with CountVectorizer at 86% accuracy.
 
