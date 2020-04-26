@@ -21,12 +21,12 @@ Data Dictionary:
 |Subreddit|Total Data|Data Features
 |---|---|---|
 E46|2062|title, selftext, subreddit
-E90|1906|tittle, selftext, subreddit
+E90|1906|title, selftext, subreddit
 
 
 ### 2) Data Cleaning
    
-E46 and E90 post were combined together into 1 dataframe. For each subreddit, there were empty posts and post with links. Since NLP can't learn from the link's URL and empty posts, these rows were dropped. In additional, HTML artifacts(/n, <a, etc) that were left inside the post during API collection and punctuations were removed. Number were kept because they important identifeiers in the automotive industry.
+E46 and E90 dataframe were combined together into 1 dataframe. For each subreddit, there were empty posts and posts with links. Since NLP can't learn from link's URL and empty posts, these rows were dropped. In additional, HTML artifacts(/n, <a, etc) that were left inside the post during API collection and punctuations were removed. Numbesr were kept because they were important identifiers in the automotive industry.
 
 After cleaning, total of 2400 row remained for processing.
 
@@ -37,12 +37,12 @@ Given the important context in 'title' and 'selftext' features, these two featur
 E46 post was given a label of '0' in the 'subreddit' feature.
 E90 post was given a label of '1' in the 'subreddit' feature.
 
-To allow NLP to better capture the root words, the post were lemmatized and the main feature for classification models.
+To allow NLP to better capture root words, each post was lemmatized.
 
 
 ### 4) Data Processing and Models
 
-1) Model Features:
+1) Model Feature:
 
     X = combine features of title and selftext.
     
@@ -74,6 +74,7 @@ Best Results: Logistic Regression with CountVectorizer at 86% accuracy.
 Best Coefficient for Logistic Regression
 
 |E46|Cvec|Tfidf
+|---|---|---|
 |e46|-1.56|-12.38
 |330ci|-0.66|-5.70
 |325ci|-0.49|-4.29
@@ -81,6 +82,7 @@ Best Coefficient for Logistic Regression
 |zhp|-0.42|-3.68
 
 |E90|Cvec|Tfidf
+|---|---|---|
 |e90|1.31|10.39
 |335i|0.85|6.53
 |e92|0.71|5.54
@@ -91,7 +93,7 @@ Best Coefficient for Logistic Regression
 
 ## Conclusion
 
-Best model was Logistic Regression with CountVectorizer as it tokenized each word and uses its distribution to help classify the post betwee E46 and E90. The best coefficient was just as expected because those were the most frequent identifier terms used by BMW enthusiast. One of the weakness in the model was the lack of post with older model year. In many of the misclassification of e46, it couldn't recongized post with model years that was older than 2004. But for E90's misclassification, it were posts with many similar car part terms between E46 and E90. Thus, to reduce false positives and false negative, need to gather more posts with older model year and more posts on how the similar car parts were installed to differentiate E46 and E90. 
+Best model was Logistic Regression with CountVectorizer as it tokenized each word and uses its distribution to help classify the post betwee E46 and E90. The best coefficients were just as expected because those were the most frequent identifier terms used by BMW enthusiast. One of the weakness in the model was the lack of post with older model year. In many of the misclassification of e46, it couldn't recongized post with model years older than 2004. But for E90's misclassification, it were posts with many similar car part terms between E46 and E90. Thus, to reduce false positives and false negative, need to gather more posts with older model year and more posts on how the similar car parts were installed to differentiate E46 and E90. 
 
 Upon deeper dive into each model, the main cause for all model to missclassify were posts with very few words and very generic terms. One example was 'muffler delete opionons yay or nay'. This post can be applied to anything with muffler. Therefore, to better improve the model in the future, these short post without meanings needs to be removed during data cleaning. 
 
