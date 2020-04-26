@@ -3,7 +3,9 @@
 ## Overview
 
 BMW manufacture many models of high performance luxury cars. One of the very popular model is the 3-Series, or known as the 'E'- series in BMW's internal code and by many BMW enthusiast.
+
 E46 was the 3-Series model production from 1997 to 2006. It consist of model such as 330i, 325, and the high performance model M3. E90 was the succssor to E46, from 2007 to 2013. it had models like 330i, 328i, 335i, 335is and the high performance model (also the last V8 engine) M3. During these production years of E90, it became E91 and E92 as BMW make minor changes and fixes.
+
 Despite the many changes of E46 to E90, the fun and exciting driving experiences remain but the common issues due to age also remain. Thus, they were very identical in many ways but also different in many ways.
 
 ## Problem Statement
@@ -71,7 +73,7 @@ Best Results: Logistic Regression with CountVectorizer at 86% accuracy.
 
 **Note: A Decision Tree without tunning hyperparameter was included to understand the effect of overfitting. 
 
-Best Coefficient for Logistic Regression
+Best Coefficient for Logistic Regression:
 
 |E46|Cvec|Tfidf
 |---|---|---|
@@ -93,7 +95,7 @@ Best Coefficient for Logistic Regression
 
 ## Conclusion
 
-Best model was Logistic Regression with CountVectorizer as it tokenized each word and uses its distribution to help classify the post betwee E46 and E90. The best coefficients were just as expected because those were the most frequent identifier terms used by BMW enthusiast. One of the weakness in the model was the lack of post with older model year. In many of the misclassification of e46, it couldn't recongized post with model years older than 2004. But for E90's misclassification, it were posts with many similar car part terms between E46 and E90. Thus, to reduce false positives and false negative, need to gather more posts with older model year and more posts on how the similar car parts were installed to differentiate E46 and E90. 
+Best model was Logistic Regression with CountVectorizer as it tokenized each word and uses its distribution to help classify the post betwee E46 and E90. The best coefficients were just as expected because those were the most frequent identifier terms used by BMW enthusiast. One of the weakness in the model was the lack of post with older model year. In many of the misclassification of e46, it couldn't recongized post with model yearsolder than 2004. But for E90's misclassification, it were posts with many similar car part terms between E46 and E90. Thus, to reduce false positives and false negative, need to gather more posts with older model year and more posts on how the similar car parts were installed to differentiate E46 and E90. 
 
 Upon deeper dive into each model, the main cause for all model to missclassify were posts with very few words and very generic terms. One example was 'muffler delete opionons yay or nay'. This post can be applied to anything with muffler. Therefore, to better improve the model in the future, these short post without meanings needs to be removed during data cleaning. 
 
