@@ -2,7 +2,7 @@
 
 ## Overview
 
-BMW manufacture many models of high performance luxury cars. One of the very popular model is the 3-Series, or known as the 'E'- series in BMW's internal code and by many BMW enthusiast.
+BMW manufactures many models of high performance luxury cars. One of the very popular model is the 3-Series, or known as the 'E'- series until end of model year 2013 in BMW's internal code and by many BMW enthusias.
 
 E46 was the 3-Series model production from 1997 to 2006. It consist of model such as 330i, 325, and the high performance model M3. E90 was the succssor to E46, from 2007 to 2013. it had models like 330i, 328i, 335i, 335is and the high performance model (also the last V8 engine) M3. During these production years of E90, it became E91 and E92 as BMW make minor changes and fixes.
 
