@@ -1,8 +1,12 @@
 # NLP to classify BMW E46 and E90s.
 
+
+![](./bmw.png)
+
+
 ## Overview
 
-BMW manufactures many models of high performance luxury cars. One of the very popular model is the 3-Series, or known as the 'E'- series until end of model year 2013 in BMW's internal code and by many BMW enthusias.
+BMW manufactures many models of high performance luxury cars. One of the very popular model is the 3-Series, or known as the 'E'- series until end of model year 2013 in BMW's internal code and by many BMW enthusiast.
 
 E46 was the 3-Series model production from 1997 to 2006. It consist of model such as 330i, 325, and the high performance model M3. E90 was the succssor to E46, from 2007 to 2013. it had models like 330i, 328i, 335i, 335is and the high performance model (also the last V8 engine) M3. During these production years of E90, it became E91 and E92 as BMW make minor changes and fixes.
 
@@ -16,7 +20,7 @@ From Reddit, gather posts from subreddit of E46 and E90. Combine the post togeth
 
 ### 1) Data Gathering
 
-PushShift' API was use to collect post from subreddit of E46 and E90 . A total of 2062 non-duplicated raw post were gathered for E46 and 1906 post for E90. For each post, only the title of the post, the self text and the its subreddit group E46 or E90, were gather. 
+PushShift' API was use to collect post from subreddit of E46 and E90 . A total of 2062 non-duplicated raw post were gathered for E46 and 1906 post for E90. For each post, only the title of the post, the self text and the its subreddit group E46 or E90, were gathered. 
 
 Data Dictionary:
 
@@ -28,9 +32,9 @@ E90|1906|title, selftext, subreddit
 
 ### 2) Data Cleaning
    
-E46 and E90 dataframe were combined together into 1 dataframe. For each subreddit, there were empty posts and posts with links. Since NLP can't learn from link's URL and empty posts, these rows were dropped. In additional, HTML artifacts(/n, <a, etc) that were left inside the post during API collection and punctuations were removed. Numbesr were kept because they were important identifiers in the automotive industry.
+E46 and E90 dataframe were combined together into 1 dataframe. For each subreddit, there were empty posts and posts with links. Since NLP can't learn from link's URL and empty posts, these rows were dropped. In additional, HTML artifacts(/n, <a, etc) that were left inside the post during API collection and punctuations were removed. Numbers were kept because they are important identifiers in the automotive industry.
 
-After cleaning, total of 2400 row remained for processing.
+After cleaning, total of 2400 row remained for preprocessing.
 
 ### 3) Preprocessing
 
@@ -46,7 +50,7 @@ To allow NLP to better capture root words, each post was lemmatized.
 
 1) Model Feature:
 
-    X = combine features of title and selftext.
+    X = combined features of title and selftext.
     
     y = subreddit label (E46 or E90)
     
@@ -55,7 +59,7 @@ To allow NLP to better capture root words, each post was lemmatized.
     Model : Logistic Regression, KNearest Neighbors, Navies Bayes Mulitinomials and Decision Trees.
     
     
-3) CountVectorizer and TfidfVectorizer was used for each model to determine the best transformer. 
+3) CountVectorizer and TfidfVectorizer were used for each model to determine the best transformer. 
 
 4) GridSearchCV was use to find the best hyperparameter for each pair of model and transformer. 
 
@@ -95,7 +99,7 @@ Best Coefficient for Logistic Regression:
 
 ## Conclusion
 
-Best model was Logistic Regression with CountVectorizer as it tokenized each word and uses its distribution to help classify the post betwee E46 and E90. The best coefficients were just as expected because those were the most frequent identifier terms used by BMW enthusiast. One of the weakness in the model was the lack of post with older model year. In many of the misclassification of e46, it couldn't recongized post with model yearsolder than 2004. But for E90's misclassification, it were posts with many similar car part terms between E46 and E90. Thus, to reduce false positives and false negative, need to gather more posts with older model year and more posts on how the similar car parts were installed to differentiate E46 and E90. 
+Best model was Logistic Regression with CountVectorizer as it tokenized each word and uses its distribution to help classify posts betwee E46 and E90. The best coefficients were just as expected because those were the most frequent identifier terms used by BMW enthusiast. One of the weakness in the model was the lack of post with older model year. In many of the misclassification of e46, it couldn't recongized post with model years older than 2004. But for E90's misclassification, it were posts with many similar car part terms between E46 and E90. Thus, to reduce false positives and false negative, need to gather more posts with older model year and more posts about how the similar car parts were installed to differentiate E46 and E90. 
 
 Upon deeper dive into each model, the main cause for all model to missclassify were posts with very few words and very generic terms. One example was 'muffler delete opionons yay or nay'. This post can be applied to anything with muffler. Therefore, to better improve the model in the future, these short post without meanings needs to be removed during data cleaning. 
 
