@@ -54,7 +54,7 @@ To allow NLP to better capture root words, each post was lemmatized.
     
     y = subreddit label (E46 or E90)
     
-2) With the given features, use 4 models to determine the best model for the NLP goal.
+2) With the given features, used 4 models to determine the best model for the NLP goal.
 
     Model : Logistic Regression, KNearest Neighbors, Navies Bayes Mulitinomials and Decision Trees.
     
@@ -73,7 +73,7 @@ Accuracy Matrix:
 CountVect|86%|58%|84%|79%|80%
 Tfidf|85%|76%|83%|83%|81%
 
-Best Results: Logistic Regression with CountVectorizer at 86% accuracy.
+Best Result: Logistic Regression with CountVectorizer at 86% accuracy.
 
 **Note: A Decision Tree without tunning hyperparameter was included to understand the effect of overfitting. 
 
